@@ -1,3 +1,4 @@
+require './lib/racional.rb'
 #Definicion de la clase matriz:
 
 class Matriz
@@ -59,7 +60,11 @@ class Matriz
 			result = Array.new(@fil){Array.new(@col) {0}}
 			@fil.times do |i|
 				other.col.times do |j|
-					aux = 0
+					if(@matriz[0][0].is_a?Fraccion)
+						aux = Fraccion.new(0,1)
+					else
+						aux = 0
+					end
                     @col.times do |k|
                         aux += @matriz[i][k] * other.matriz[k][j]
                     end
@@ -122,9 +127,26 @@ class Matriz
 end
 
 if __FILE__ == $0
-	A = Matriz.new(2,3)
-	A.fill([[1,2,5],[3,4,5]])
-	puts A
-	B = A.trasp
-	puts B
+	f1 = Fraccion.new(1,2)
+	f2 = Fraccion.new(1,3)
+	f3 = Fraccion.new(1,4)
+	f4 = Fraccion.new(1,5)
+	
+	f5 = Fraccion.new(1,2)
+	f6 = Fraccion.new(2,3)
+	f7 = Fraccion.new(3,4)
+	f8 = Fraccion.new(4,5)
+
+	m1 = Matriz.new(2)
+	m1.fill([[f1,f2],[f3,f4]])
+
+	m2 = Matriz.new(2)
+	m2.fill([[f5,f6],[f7,f8]])
+
+	m3 = m1 + m2
+	m4 = m1 * m2
+
+	puts m3
+	puts
+	puts m4
 end

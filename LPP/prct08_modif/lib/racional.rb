@@ -4,7 +4,6 @@ class Fraccion
 	def initialize(num,den)
 		@n,@d = num.to_i , den.to_i
 	end
-#<<<<<<< HEAD
 
 	def to_s
 		"#{@n} / #{@d}"
@@ -52,7 +51,8 @@ class Fraccion
 	def <=> (other)
 		(@n.to_f / @d)<=>(other.n.to_f / other.d)
 	end
-/
+
+=begin
 	def ==(other)
 		check = false
 		if(@n == other.n && @d == other.d)
@@ -95,7 +95,7 @@ class Fraccion
 		end
 		check
 	end
-/
+
 	def imp_to_mix
 		base = @n/@d
 		num = @n % @d
@@ -105,7 +105,7 @@ class Fraccion
 	def recip
 		Fraccion.new(@d,@n)
 	end
-#=======
+
 	def num
 		@n
 	end
@@ -128,7 +128,7 @@ class Fraccion
 			@d = @d*(-1)
 		end
 		self.to_s
-#>>>>>>> origin/test_alderete
+
 	end
 	def op
 		Fraccion.new(-@n,@d)	 
@@ -138,9 +138,9 @@ class Fraccion
 		f2=other.n.to_f/other.d
 		f1%f2
 	end
+=end
+
+
 end
-
-
-
 
 
